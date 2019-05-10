@@ -6,8 +6,6 @@ import fromzad1.objekts.Place;
 import fromzad1.objekts.Transition;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.List;
 import java.util.LinkedList;
 

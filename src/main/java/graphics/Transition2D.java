@@ -11,11 +11,13 @@ import java.awt.geom.Rectangle2D;
  * Implementacia Prechodu. Pri vykreslovani sa zjavi ako stvorec
  * Metoda draw zistuje, ci je prechod pustitelny, podla toho vykresluje zeleni (ak ano), alebo cerveny (ak nie) stvorec.
  * Nazov pod stvorcom je upraveny aby bol v strede
+ * Defaultne prechod (resp. ziadny objekt) nema nazov
+ * Nazov sa da upravit v editore
  */
 public class Transition2D extends Rectangle2D.Float implements Drawable {
 
     private Transition transition;
-    private final int width = 2;
+    private final int WIDTH = 2;
 
     public Transition2D(int x, int y, Transition transition){
         super(x, y, 40, 40);
@@ -29,7 +31,7 @@ public class Transition2D extends Rectangle2D.Float implements Drawable {
 
     @Override
     public void draw(Graphics2D graphics2D) {
-        graphics2D.setStroke(new BasicStroke(width));
+        graphics2D.setStroke(new BasicStroke(WIDTH));
         if (this.transition.testFireAbility()){
             graphics2D.setColor(Color.GREEN);
         } else {
@@ -46,6 +48,7 @@ public class Transition2D extends Rectangle2D.Float implements Drawable {
         );
     }
 
+//    Pri kliknuti na transition sa overi, ci je pustitelny, ak ano, pusti sa
     @Override
     public void onClick(MouseEvent e) {
         if (this.transition.testFireAbility()){

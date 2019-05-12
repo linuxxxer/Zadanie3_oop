@@ -8,6 +8,11 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Line2D;
 
+/*
+ * "Interakcny" mod programu
+ * Sluzi na nastavenie tokenov, vahy hrany, pustenie prechodov
+ */
+
 public class InteractionListener extends Lisstener {
 
     public InteractionListener(NetsCanvas canvas) {

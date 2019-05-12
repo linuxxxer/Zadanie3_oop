@@ -56,13 +56,13 @@ public class DrawableTransformer extends Transformer<List<Drawable>, Document> {
     }
 
     public List<Drawable> transformPetrinetToDrawable(PetriNet pn){
-        List<Drawable> drawables = new LinkedList<>();
+        List<Drawable> drawables =      new LinkedList<>();
 
         for (fromzad1.objekts.Arc arc : pn.getArcMap().values()){
-            ArcStartEndPoints asep =  new ArcStartEndPoints();
-            Point startPoint = asep.arcStartPointCalc(arc.getFromWhere().get(0), arc.getToWhere().get(0));
-            Point endPoint = asep.arcStartPointCalc(arc.getToWhere().get(0), arc.getFromWhere().get(0));
-            Arc2D arc2D = new Arc2D(
+            ArcStartEndPoints asep =    new ArcStartEndPoints();
+            Point startPoint =          asep.arcStartPointCalc(arc.getFromWhere().get(0), arc.getToWhere().get(0));
+            Point endPoint =            asep.arcEndPointCalc(arc.getFromWhere().get(0), arc.getToWhere().get(0));
+            Arc2D arc2D =               new Arc2D(
                     (int)startPoint.getX(),
                     (int)startPoint.getY(),
                     (int)endPoint.getX(),

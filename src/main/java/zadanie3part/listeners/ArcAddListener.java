@@ -12,6 +12,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+/*
+ * Listener na pridavanie hran do petriho sieta
+ */
+
 public class ArcAddListener extends Lisstener {
 
     private int clicked = 0;

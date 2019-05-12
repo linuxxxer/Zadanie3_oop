@@ -8,6 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
+/*
+ * Zakladna struktura tlacidiel pouzivanych v programe (okrem Save, Open a Clear)
+ */
+
 public class ModeButton extends JButton implements ActionListener {
 
     private NetsCanvas canvas;

@@ -15,13 +15,14 @@ import java.awt.geom.Line2D;
  * Implementacia hrany. Je to orientovana ciara medzi prechodom a miestom (resp. opacne)
  * Metoda 'draw' zavola metodu 'drawArrow', ktora vykresluje ciaru so spikou smerovaciu spravnym smerom
  * Ak sa jedna o reset hranu, metoda vykresli dve sipky pod sebou na ciaru
+ * Vahu hrany sa da nastavit v editore v interakcnom mode programu (kliknutim na hranu sa otvori dialogove okno)
  */
 
 public class Arc2D extends Line2D.Float implements Drawable{
     private long ID;
     private final int ARR_SIZE = 8;
     private Arc arc;
-    private final int width = 2;
+    private final int WIDTH = 2;
     public Arc2D(int sourceX, int sourceY, int destX, int destY, Arc arc){
         super(sourceX, sourceY, destX, destY);
         this.arc = arc;
@@ -34,7 +35,7 @@ public class Arc2D extends Line2D.Float implements Drawable{
 
     @Override
     public void draw(Graphics2D graphics2D) {
-        graphics2D.setStroke(new BasicStroke(width));
+        graphics2D.setStroke(new BasicStroke(WIDTH));
         graphics2D.setColor(Color.RED);
         graphics2D.drawString("" + arc.getMultiplicity(), middleX(getX2(), getX1()), middleY(getY2(), getY1()));
         graphics2D.setColor(Color.BLACK);
@@ -45,6 +46,8 @@ public class Arc2D extends Line2D.Float implements Drawable{
         }
     }
 
+//    Metoda na nastavenie vahy hrany
+//      ak nie je na input cele cislo, vacsie ako 0, vyhodi warning dialog window
     @Override
     public void onClick(MouseEvent e) {
         try {
@@ -65,6 +68,7 @@ public class Arc2D extends Line2D.Float implements Drawable{
         return (int)middle_y;
     }
 
+//    Metoda na nakreslenie sipky na hranu
     void drawArrow(Graphics g1, int x1, int y1, int x2, int y2, boolean reset) {
         Graphics2D g = (Graphics2D) g1.create();
 
@@ -75,7 +79,6 @@ public class Arc2D extends Line2D.Float implements Drawable{
         at.concatenate(AffineTransform.getRotateInstance(angle));
         g.transform(at);
 
-        // Draw horizontal arrow starting in (0, 0)
         g.drawLine(0, 0, len, 0);
         if (reset){
             g.fillPolygon(new int[] {len-ARR_SIZE, (len)-2*ARR_SIZE, (len)-2*ARR_SIZE, len-ARR_SIZE},

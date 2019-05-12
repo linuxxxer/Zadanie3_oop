@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /*
- * When clicking on this button, the whole petriNet is cleared.
+ * Kliknutim na toto tlacidlo, program vymaze cely Petri Net.
  */
 
 public class Clear extends JButton implements MouseListener, ButtonInterface<Void, PetriNet, NetsCanvas> {

@@ -11,6 +11,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+/*
+ * Listener umoznuje pridavanie reset hran do sieta
+ */
+
 public class ResetArcAddListener extends Lisstener {
 
     private int clicked = 0;

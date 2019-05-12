@@ -1,8 +1,8 @@
 package zadanie3part.buttons;
 
 /*
- * The basic interface for buttons Save, Open and Clear.
- * Other buttons do not needs this
+ * Zakladny interface bre tlacidla Save Open a Clear
+ * Ostatne tlacidla funguju na inom principe, takze nepotrebuju pouzivat tento interface
  */
 
 public interface ButtonInterface<K, T, P> {

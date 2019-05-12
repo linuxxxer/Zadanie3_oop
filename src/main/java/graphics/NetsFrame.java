@@ -17,6 +17,7 @@ import java.awt.event.*;
  */
 public class NetsFrame extends Frame {
 
+//    inicializacia prvkov okna
     private ModeButton addTransButton;
     private ModeButton addPlaceButton;
     private ModeButton addArcButton;
@@ -29,27 +30,26 @@ public class NetsFrame extends Frame {
     private final Open openButton;
     private final Clear clearButton;
 
-    private final Panel buttonPanel;
+    private final Panel toolbar;
     private final NetsCanvas canvas;
 
+
     public NetsFrame() throws HeadlessException {
-        super("Zadanie 2");
+        super("Zadanie 3 - Petri Net Editor");
 
-//        Setting up the frame
+//        Nastavenie framu
         setLayout(new BorderLayout());
+        setVisible(true);
 
+//        nastavenie panelu na tlacidla
+        toolbar = new Panel(new FlowLayout(FlowLayout.LEFT));
+        toolbar.setBackground(Color.DARK_GRAY);
 
-
-
-//        Setting up the panel for the buttons
-        buttonPanel = new Panel(new FlowLayout(FlowLayout.LEFT));
-        buttonPanel.setBackground(Color.DARK_GRAY);
-
-//        Setting up the canvas
+//        Nastavenie canvasu
         canvas = new NetsCanvas(null);
         canvas.setBackground(Color.GRAY);
 
-//        Setting up the buttons
+//        Nastavenie tlacidiel
         addTransButton = new ModeButton(new ImageIcon(Class.class.getResource("/transition.png")), canvas, new TransitionAddListener(canvas));
         addPlaceButton = new ModeButton(new ImageIcon(Class.class.getResource("/place.png")), canvas, new PlaceAddListener(canvas));
         addArcButton = new ModeButton(new ImageIcon(Class.class.getResource("/arc.png")), canvas, new ArcAddListener(canvas));
@@ -67,29 +67,35 @@ public class NetsFrame extends Frame {
         saveButton.setFocusable(false);
         clearButton.setFocusable(false);
 
+        toolbar.add(openButton);
+        toolbar.add(saveButton);
+        toolbar.add(clearButton);
+        toolbar.add(interactButton);
+        toolbar.add(addTransButton);
+        toolbar.add(addPlaceButton);
+        toolbar.add(addArcButton);
+        toolbar.add(addResetButton);
+        toolbar.add(setLabelButton);
+        toolbar.add(reSetPositionButton);
+        toolbar.add(removeButton);
 
-        buttonPanel.add(openButton);
-        buttonPanel.add(saveButton);
-        buttonPanel.add(clearButton);
-        buttonPanel.add(interactButton);
-        buttonPanel.add(addTransButton);
-        buttonPanel.add(addPlaceButton);
-        buttonPanel.add(addArcButton);
-        buttonPanel.add(addResetButton);
-        buttonPanel.add(setLabelButton);
-        buttonPanel.add(reSetPositionButton);
-        buttonPanel.add(removeButton);
 
+//        nastavenie listenereov na open, save a clear tlacidla
+//        tieto tlacidla nefunguju na principe ModeButton,
+//          takze listenery sa nastavuju vzlast
         openButton.addActionListener(e -> {
             openButton.performAction(canvas.getPetriNet(), canvas);
             canvas.repaint();
         });
 
-        saveButton.addActionListener(e -> saveButton.performAction(canvas.getPetriNet(), canvas));
+        saveButton.addActionListener(e -> {
+            saveButton.performAction(canvas.getPetriNet(), canvas);
+        });
 
         clearButton.addActionListener(e -> {
             if (canvas.getPetriNet() != null) {
                 clearButton.performAction(canvas.getPetriNet(), canvas);
+                JOptionPane.showMessageDialog(canvas, "Petri net successfully cleared!");
                 canvas.repaint();
             } else {
                 JOptionPane.showMessageDialog(canvas, "      Nothing to clear");
@@ -97,11 +103,15 @@ public class NetsFrame extends Frame {
         });
 
 
-        this.add(buttonPanel, BorderLayout.PAGE_START);
+        this.add(toolbar, BorderLayout.PAGE_START);
         this.add(canvas, BorderLayout.CENTER);
 
         setSize(800, 600);
 
+//      nastavovanie keylistenerov
+//        CTRL + Q - zatvaranie okna
+//        CTRL + S - dialogove okno ulozenia
+//        CTRL + O - dialogove okno otvarania
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -122,6 +132,7 @@ public class NetsFrame extends Frame {
             }
         });
 
+//        window listener na zatvaranie
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -131,8 +142,7 @@ public class NetsFrame extends Frame {
                 }
             }
         });
-        this.requestFocus();
-        setVisible(true);
+
 
     }
 }

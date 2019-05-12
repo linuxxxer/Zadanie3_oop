@@ -6,6 +6,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import java.io.File;
 
+/*
+ * Exportovanie petrinetu do XML
+ */
 public class Exporter {
 
     public void exporting(Document document, String pathToFile){
@@ -15,8 +18,8 @@ public class Exporter {
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.marshal(document, new File(pathToFile));
 
-        } catch(Exception ignored){
-            ignored.printStackTrace();
+        } catch(Exception e){
+            e.printStackTrace();
         }
     }
 

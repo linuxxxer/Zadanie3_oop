@@ -45,6 +45,7 @@ public class PetriNet {
             return null;
     }
 
+//    metody na vratenie mapy objektov
     public Map<Long, Place> getPlaceMap() {
         return placeMap;
     }
@@ -57,6 +58,7 @@ public class PetriNet {
         return arcMap;
     }
 
+//    Metoda na vymazanie objektu podla id
     public void removeObjekt(long id){
         if (placeMap.containsKey(id)){
             removePlace(id);

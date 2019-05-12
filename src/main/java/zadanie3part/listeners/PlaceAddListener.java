@@ -8,6 +8,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+/*
+ * Listener na pridavanie miest do sieta
+ */
+
 public class PlaceAddListener extends Lisstener {
 
     public PlaceAddListener(NetsCanvas canvas) {

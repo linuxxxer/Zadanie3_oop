@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.Line2D;
 
 /*
- * Removes
+ * Listener ktory umoznuje vymazat objekty individualne zo sieta
  */
 
 public class RemoveObjektListener extends Lisstener {

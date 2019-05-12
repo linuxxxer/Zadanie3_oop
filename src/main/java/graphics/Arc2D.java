@@ -50,7 +50,6 @@ public class Arc2D extends Line2D.Float implements Drawable{
         try {
             int result = Integer.parseInt(JOptionPane.showInputDialog("Add new multiplicity:"));
             this.arc.setMultiplicity(result);
-            System.out.println(result);
         } catch (NumberFormatException | ExceptionInvalidValueOnInput except){
             JOptionPane.showMessageDialog(null, "Input must be an integer greater than zero!", "Warning!", JOptionPane.WARNING_MESSAGE);
         }
@@ -79,10 +78,10 @@ public class Arc2D extends Line2D.Float implements Drawable{
         // Draw horizontal arrow starting in (0, 0)
         g.drawLine(0, 0, len, 0);
         if (reset){
-            g.fillPolygon(new int[] {(len*3)/4-ARR_SIZE, ((len*3)/4)-2*ARR_SIZE, ((len*3)/4)-2*ARR_SIZE, (len*3)/4-ARR_SIZE},
+            g.fillPolygon(new int[] {len-ARR_SIZE, (len)-2*ARR_SIZE, (len)-2*ARR_SIZE, len-ARR_SIZE},
                 new int[] {0, -ARR_SIZE, ARR_SIZE, 0}, 4);
         }
-        g.fillPolygon(new int[] {(len*3)/4, ((len*3)/4)-ARR_SIZE, ((len*3)/4)-ARR_SIZE, (len*3)/4},
+        g.fillPolygon(new int[] {len, (len)-ARR_SIZE, len-ARR_SIZE, len},
                 new int[] {0, -ARR_SIZE, ARR_SIZE, 0}, 4);
     }
 }

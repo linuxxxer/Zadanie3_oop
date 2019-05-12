@@ -29,6 +29,7 @@ public class Clear extends JButton implements MouseListener, ButtonInterface<Voi
             if (petriNet != null) {
                 netsCanvas.loadPetriNet(petriNet.clearPetriNet());
                 netsCanvas.load(new DrawableTransformer(petriNet).transformPetrinetToDrawable(petriNet));
+                netsCanvas.searchTheBiggestID();
                 netsCanvas.repaint();
                 return null;
             }

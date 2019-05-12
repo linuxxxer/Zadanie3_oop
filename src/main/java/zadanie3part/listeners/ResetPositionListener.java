@@ -19,14 +19,20 @@ public class ResetPositionListener extends Lisstener {
     public void mouseClicked(MouseEvent e) {
         for (Drawable drawable : super.getCanvas().getDrawableList()){
             if (drawable.contains(e.getX(), e.getY())){
-                int newX = Integer.parseInt(JOptionPane.showInputDialog(null, "Add the new X:"));
-                int newY = Integer.parseInt(JOptionPane.showInputDialog(null, "Add the new Y:"));
+                int newX = Integer.parseInt(JOptionPane.showInputDialog(super.getCanvas(), "Add the new X:"));
+                int newY = Integer.parseInt(JOptionPane.showInputDialog(super.getCanvas(), "Add the new Y:"));
                 try {
                     drawable.getObjekt().setX(newX);
                     drawable.getObjekt().setY(newY);
-                    super.getCanvas().load(new DrawableTransformer(super.getCanvas().getPetriNet()).transformPetrinetToDrawable(super.getCanvas().getPetriNet()));
+                    super.getCanvas().load(
+                            new DrawableTransformer(
+                                    super.getCanvas().getPetriNet()
+                            ).transformPetrinetToDrawable(
+                                    super.getCanvas().getPetriNet()
+                            )
+                    );
                 } catch (ExceptionInvalidValueOnInput exceptionInvalidValueOnInput) {
-                    JOptionPane.showMessageDialog(null, "The input value must be positive integer!", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(super.getCanvas(), "The input value must be positive integer!", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         }

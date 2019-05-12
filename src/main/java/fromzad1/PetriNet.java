@@ -30,23 +30,6 @@ public class PetriNet {
         placeMap.put(place.getID(), place);
     }
 
-
-
-    public void printPetriNet(){
-        for (Place place : placeMap.values()){
-            System.out.println("Place: " + place.getName() + "\tID: " + place.getID());
-        }
-        for (Transition transition :transitionMap.values()){
-            System.out.println("Trans: " + transition.getName() + "\tID: " + transition.getID());
-        }
-        for (Arc arc : arcMap.values()){
-            System.out.println("Arc:  " + arc.getName() + "\tID: " + arc.getID());
-        }
-    }
-
-
-
-
 //    metody vracaju dany objekt podla id
     public Objekt getObjekt(long id){
         if (placeMap.containsKey(id)){
@@ -102,6 +85,8 @@ public class PetriNet {
         transitionMap.remove(id);
     }
 
+//    metoda vymaze vsetky hrany v liste tak, aby po nich nezostali stopy
+//    po tomto uz je bezpecne vymazat objekt
     private void removeUnnecessaryArcs(List<Objekt> arcs){
                 while (arcs.size() != 0){
                     Objekt arc = arcs.get(0);
@@ -115,6 +100,8 @@ public class PetriNet {
         arcMap.remove(id);
     }
 
+
+//    metoda vycisti uplne petri siet
     public PetriNet clearPetriNet() {
         placeMap.clear();
         transitionMap.clear();

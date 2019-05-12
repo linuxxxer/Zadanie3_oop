@@ -4,6 +4,7 @@ import fromzad1.PetriNet;
 import graphics.*;
 import zad2.sk.stuba.fei.oop.generated.*;
 
+import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -58,11 +59,14 @@ public class DrawableTransformer extends Transformer<List<Drawable>, Document> {
         List<Drawable> drawables = new LinkedList<>();
 
         for (fromzad1.objekts.Arc arc : pn.getArcMap().values()){
+            ArcStartEndPoints asep =  new ArcStartEndPoints();
+            Point startPoint = asep.arcStartPointCalc(arc.getFromWhere().get(0), arc.getToWhere().get(0));
+            Point endPoint = asep.arcStartPointCalc(arc.getToWhere().get(0), arc.getFromWhere().get(0));
             Arc2D arc2D = new Arc2D(
-                    arc.getFromWhere().get(0).getX() + 20,
-                    arc.getFromWhere().get(0).getY() + 20,
-                    arc.getToWhere().get(0).getX() + 20,
-                    arc.getToWhere().get(0).getY() + 20,
+                    (int)startPoint.getX(),
+                    (int)startPoint.getY(),
+                    (int)endPoint.getX(),
+                    (int)endPoint.getY(),
                     arc
             );
             drawables.add(arc2D);

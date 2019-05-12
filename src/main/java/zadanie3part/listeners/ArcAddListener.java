@@ -5,6 +5,7 @@ import fromzad1.myexceptions.ExceptionWrongObjectType;
 import fromzad1.objekts.Arc;
 import fromzad1.objekts.Objekt;
 import graphics.Arc2D;
+import graphics.ArcStartEndPoints;
 import graphics.NetsCanvas;
 
 import javax.swing.*;
@@ -66,15 +67,18 @@ public class ArcAddListener extends Lisstener {
                         1,
                         super.getCanvas().getID()
                 );
+                ArcStartEndPoints asep =  new ArcStartEndPoints();
+                Point startPoint = asep.arcStartPointCalc(fromWhere, toWhere);
+                Point endPoint = asep.arcEndPointCalc(fromWhere, toWhere);
                 super.getCanvas().getPetriNet().addArc(arc);
                 super.getCanvas().getDrawableList().add(new Arc2D(
-                        fromWhere.getX() + 20,
-                        fromWhere.getY() + 20,
-                        toWhere.getX() + 20,
-                        toWhere.getY() + 20,
+                        (int)startPoint.getX(),
+                        (int)startPoint.getY(),
+                        (int)endPoint.getX(),
+                        (int)endPoint.getY(),
                         arc
                 ));
-                super.getCanvas().swapArcFirst();
+
             } catch (ExceptionWrongObjectType exceptionWrongObjectType) {
                 JOptionPane.showMessageDialog(
                         getCanvas(),

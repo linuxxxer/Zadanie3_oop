@@ -37,7 +37,9 @@ public class NetsFrame extends Frame {
 
 //        Setting up the frame
         setLayout(new BorderLayout());
-        setVisible(true);
+
+
+
 
 //        Setting up the panel for the buttons
         buttonPanel = new Panel(new FlowLayout(FlowLayout.LEFT));
@@ -59,6 +61,12 @@ public class NetsFrame extends Frame {
         openButton = new Open();
         saveButton = new Save();
         clearButton = new Clear();
+
+        canvas.setFocusable(false);
+        openButton.setFocusable(false);
+        saveButton.setFocusable(false);
+        clearButton.setFocusable(false);
+
 
         buttonPanel.add(openButton);
         buttonPanel.add(saveButton);
@@ -94,6 +102,26 @@ public class NetsFrame extends Frame {
 
         setSize(800, 600);
 
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_Q) {
+                    int result = JOptionPane.showConfirmDialog(canvas, "Really quit?");
+                    if (result == JOptionPane.YES_OPTION) {
+                        dispose();
+                    }
+                }
+                if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_S) {
+                    saveButton.performAction(canvas.getPetriNet(), canvas);
+                    canvas.repaint();
+                }
+                if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_O) {
+                    openButton.performAction(canvas.getPetriNet(), canvas);
+                    canvas.repaint();
+                }
+            }
+        });
+
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -103,5 +131,8 @@ public class NetsFrame extends Frame {
                 }
             }
         });
+        this.requestFocus();
+        setVisible(true);
+
     }
 }

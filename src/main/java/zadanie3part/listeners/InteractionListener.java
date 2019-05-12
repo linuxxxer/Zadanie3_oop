@@ -20,7 +20,6 @@ public class InteractionListener extends Lisstener {
             Drawable drawable = super.getCanvas().getDrawableList().get(i);
             if (drawable.contains(e.getX(), e.getY())){
                 drawable.onClick(e);
-                super.getCanvas().getPetriNet().printPetriNet();
                 break;
             } else if (drawable.getClass() == Arc2D.class){
                 if ( new Rectangle(e.getX()-3, e.getY()-3,6,6).intersectsLine((Line2D.Float)drawable) ){

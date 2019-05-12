@@ -16,54 +16,38 @@ public class NetsCanvas extends Canvas {
 
     private List<Drawable> drawableList;
 
+
     public NetsCanvas(PetriNet petriNet){
         this.petriNet = petriNet;
         if (this.petriNet == null){
             this.petriNet = new PetriNet();
         }
         drawableList  = new LinkedList<>();
-//        addMouseListener(this);
     }
 
-    public void load(List<Drawable> drawables){
-        this.drawableList = drawables;
-    }
-
-    public long getID() {
-        ID++;
-        return ID;
-    }
-    private void setID(long id){
-        this.ID = id;
-    }
-
+//    Funkcia vyhlada najvacsie ID v siete a podla toho nastavi
+//    hodnotu ID
+//    Potrebne po nacitani Petriho Sieta z XML fileu
     public void searchTheBiggestID(){
         long id = 0;
-        for (Place place : petriNet.getPlaceMap().values()){
-            if (place.getID() > id){
-                id = place.getID();
+        if (petriNet != null) {
+            for (Place place : petriNet.getPlaceMap().values()) {
+                if (place.getID() > id) {
+                    id = place.getID();
+                }
             }
-        }
-        for (Transition transition : petriNet.getTransitionMap().values()){
-            if (transition.getID() > id){
-                id = transition.getID();
+            for (Transition transition : petriNet.getTransitionMap().values()) {
+                if (transition.getID() > id) {
+                    id = transition.getID();
+                }
             }
-        }
-        for (Arc arc: petriNet.getArcMap().values()){
-            if (arc.getID() > id){
-                id = arc.getID();
+            for (Arc arc : petriNet.getArcMap().values()) {
+                if (arc.getID() > id) {
+                    id = arc.getID();
+                }
             }
         }
         setID(id);
-    }
-
-
-    public PetriNet getPetriNet() {
-        return petriNet;
-    }
-
-    public void loadPetriNet(PetriNet petriNet){
-        this.petriNet = petriNet;
     }
 
     @Override
@@ -73,24 +57,30 @@ public class NetsCanvas extends Canvas {
         }
     }
 
+//    Setter funkcie
+    public void load(List<Drawable> drawables){
+       this.drawableList = drawables;
+    }
 
+    private void setID(long id){
+        this.ID = id;
+    }
+
+    public void loadPetriNet(PetriNet petriNet){
+        this.petriNet = petriNet;
+    }
+
+//    Getter funkcie
     public List<Drawable> getDrawableList() {
         return this.drawableList;
     }
 
-    public void swapArcFirst(){
-        List<Drawable> newList = new LinkedList<>();
-        for (Drawable drawable : drawableList){
-            if (drawable.getClass() == Arc2D.class){
-                newList.add(drawable);
-            }
-        }
-        for (Drawable drawable : drawableList){
-            if (drawable.getClass() != Arc2D.class){
-                newList.add(drawable);
-            }
-        }
-        this.drawableList = newList;
+    public PetriNet getPetriNet() {
+        return petriNet;
+    }
 
+    public long getID() {
+        ID++;
+        return ID;
     }
 }

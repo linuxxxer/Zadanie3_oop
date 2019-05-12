@@ -18,6 +18,7 @@ public class ModeButton extends JButton implements ActionListener {
         this.canvas = canvas;
         this.mouseListener = mouseListener;
         this.setBackground(Color.WHITE);
+        this.setFocusable(false);
         addActionListener(this);
     }
 

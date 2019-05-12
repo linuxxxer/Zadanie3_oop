@@ -23,11 +23,11 @@ public class ArcStartEndPoints {
     }
 
     public Point arcStartPointCalc(Objekt start, Objekt end){
-        calculateIt(start, end);
+        calculateItStart(start, end);
         return new Point((int) outX, (int) outY);
     }
 
-    private void calculateIt(Objekt start, Objekt end){
+    private void calculateItStart(Objekt start, Objekt end){
         inX1 = start.getX() + 20;
         inY1 = start.getY() + 20;
         inX2 = end.getX() + 20;
@@ -37,8 +37,8 @@ public class ArcStartEndPoints {
         int vecY = inY2 - inY1;
 
         double length = Math.sqrt( vecX*vecX + vecY*vecY );
-        double halfX = RADIUS * (vecX / length);
-        double halfY = RADIUS * (vecY / length);
+        double halfX = RADIUS * ((double)vecX / length);
+        double halfY = RADIUS * ((double)vecY / length);
 
         double tdx = 0;
 
@@ -47,13 +47,13 @@ public class ArcStartEndPoints {
             tdx = WIDTH / 2 ;
         }
         else {
-            tdx = (WIDTH/2) * (vecX/vecY);
+            tdx = (WIDTH/2) * ((double)vecX/(double)vecY);
         }
 
         double tdy = 0;
 
         if (vecX*vecX >= vecY*vecY) {
-            tdy = (WIDTH/2) * (vecY/vecX);
+            tdy = (WIDTH/2) * ((double)vecY/(double)vecX);
         }
         else {
             tdy = WIDTH/2;
@@ -87,8 +87,8 @@ public class ArcStartEndPoints {
         double vecY = inY2 - inY1;
 
         double length = Math.sqrt( vecX*vecX + vecY*vecY );
-        double halfX = RADIUS * (vecX / length);
-        double halfY = RADIUS * (vecY / length);
+        double halfX = RADIUS * ((double)vecX / length);
+        double halfY = RADIUS * ((double)vecY / length);
 
         double tdx = 0;
 
@@ -97,12 +97,12 @@ public class ArcStartEndPoints {
             tdx = WIDTH / 2;
         }
         else {
-            tdx = (WIDTH/2) * (vecX/vecY);
+            tdx = (WIDTH/2) * ((double)vecX/(double)vecY);
         }
 
         double tdy = 0;
         if (vecX*vecX >= vecY*vecY) {
-            tdy = (WIDTH/2) * (vecY/vecX);
+            tdy = (WIDTH/2) * ((double)vecY/(double)vecX);
         }
         else {
             tdy = WIDTH/2;

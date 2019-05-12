@@ -8,6 +8,7 @@ import java.awt.*;
 
 /*
  * Class vytvorena na pocitanie koncovych bodov hran
+ * Pocita podla pociatocnych bodoch
  */
 
 public class ArcStartEndPoints {

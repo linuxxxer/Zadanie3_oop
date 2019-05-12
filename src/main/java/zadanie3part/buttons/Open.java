@@ -10,9 +10,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 
 /*
- * When clicked to this button, open dialog is shown and you can choose which .xml file to load.
- * After choosing the petriNet from the file loads on the screen and you can freely
- * manipulate with it
+ * Kliknutim na tlacidla sa otvori dialogove okno otvarania XML suboru.
+ * Po vybrati sa subor nacita
  */
 
 public class Open extends JButton implements ButtonInterface<Void, PetriNet, NetsCanvas>{

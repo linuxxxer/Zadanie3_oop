@@ -10,8 +10,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 
 /*
-* When clicked on this button, you will be able to set the location and the filename where you want to save.
-*/
+ * Po kliknuti na tlacidlo sa otvori dialogove okno na ulozenie Petriho sieta.
+ */
 
 public class Save extends JButton implements ButtonInterface<Document, PetriNet, NetsCanvas> {
 

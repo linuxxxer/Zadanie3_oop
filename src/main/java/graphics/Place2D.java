@@ -11,11 +11,12 @@ import java.awt.geom.Ellipse2D;
  * Implementacia Miesta. Na Canvasu sa zjavi ako kruh.
  * Vykreslovanie je riadene pomocou metody 'draw'
  * Vykreslovanie nazvu miesta a pocet tokenov je prisposebene, aby boli v strede
+ * Tokeny sa pridavaju a odoberavaju v interakcnom mode editora
  */
 public class Place2D extends Ellipse2D.Float implements Drawable {
 
     private Place place;
-    private final int width = 2;
+    private final int WIDTH = 2;
 
     public Place2D(int x, int y, Place place){
         super(x, y, 40, 40);
@@ -29,7 +30,7 @@ public class Place2D extends Ellipse2D.Float implements Drawable {
 
     @Override
     public void draw(Graphics2D graphics2D) {
-        graphics2D.setStroke(new BasicStroke(width));
+        graphics2D.setStroke(new BasicStroke(WIDTH));
         graphics2D.setColor(Color.WHITE);
         graphics2D.fill(this);
 
@@ -44,13 +45,13 @@ public class Place2D extends Ellipse2D.Float implements Drawable {
     @Override
     public void onClick(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1){
-            // add token when left mouse button pressed
+            // pridavanie tokenov po kliknutim lavym tlacidlom
             place.setToken(1);
         }else if (e.getButton() == MouseEvent.BUTTON3){
-            // remove token when right mouse button pressed
+            // odoberanie tokenov po kliknutim pravym tlacidlom
             place.setToken(-1);
         }else if (e.getButton() == MouseEvent.BUTTON2){
-            // reset all tokens when middle mouse button pressed
+            // zmazanie tokenov po kliknutim strednym tlacidlom
             place.resetToken();
         }
     }

@@ -1,6 +1,7 @@
 package graphics;
 
 import zad2.sk.stuba.fei.oop.generated.Document;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -8,6 +9,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+
+/*
+ * Importovanie petrinetu z XML
+ */
 
 public class Importer {
 

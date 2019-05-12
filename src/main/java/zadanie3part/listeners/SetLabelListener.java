@@ -7,6 +7,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+/*
+ * Listener prepne program do "modu" menenia labelov objektov
+ */
+
 public class SetLabelListener extends Lisstener {
 
     public SetLabelListener(NetsCanvas canvas) {

@@ -8,6 +8,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+/*
+ * Listener, ktory umoznuje pridavat prechodov do sieta
+ */
+
 public class TransitionAddListener extends Lisstener {
 
 

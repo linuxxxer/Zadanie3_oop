@@ -6,6 +6,10 @@ import fromzad1.objekts.*;
 import zad2.sk.stuba.fei.oop.generated.ArcType;
 import zad2.sk.stuba.fei.oop.generated.Document;
 
+/*
+ * Class na transformaciu Petriho sieta na Document pre ulozenie
+ */
+
 public class DocumentTransformer extends Transformer<Document, PetriNet> {
 
     @Override
